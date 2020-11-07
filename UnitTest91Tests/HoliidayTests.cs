@@ -7,31 +7,42 @@ using System.Text;
 namespace UnitTest91.Tests
 {
     [TestClass()]
-    public class HoliidayTests
+    public class HolidayTests
     {
+        private HolidayTest _holiday;
+
+        [TestInitialize]
+        public void SetUp()
+        {
+            _holiday = new HolidayTest();
+        }
         [TestMethod()]
         public void SayHello_Xms_Yes_Test()
         {
-            var expect = "Merry Xmas";
-            var holiday = new HoliidayTest(){ _toDay = new DateTime(2019,12,25)};
-            var actual = holiday.SayHello();
-
-            Assert.AreEqual(expect, actual);
+            SetToday(12, 25);
+            ResponseShouldBe("Merry Xmas");
         }
 
         [TestMethod()]
         public void SayHello_Xms_No_Test()
         {
-            var expect = "Today is not Xmas";
-            var holiday = new HoliidayTest() { _toDay = new DateTime(2019, 11, 11) };
+            SetToday(11, 11);
+            ResponseShouldBe("Today is not Xmas");
 
-            var actual = holiday.SayHello();
+        }
 
-            Assert.AreEqual(expect, actual);
+        private void SetToday(int month, int day)
+        {
+            _holiday._toDay = new DateTime(2020,month,day);
+        }
+
+        private void ResponseShouldBe(string expected)
+        {
+            Assert.AreEqual(expected, _holiday.SayHello());
         }
     }
 
-    class HoliidayTest : Holiiday
+    class HolidayTest : Holiday
     {
         public DateTime _toDay;
         protected override DateTime GetToday()

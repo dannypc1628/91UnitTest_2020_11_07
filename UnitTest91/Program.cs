@@ -11,7 +11,7 @@ namespace UnitTest91
         }
     }
 
-    public class Holiiday
+    public class Holiday
     {
         
 
