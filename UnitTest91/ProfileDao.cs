@@ -1,6 +1,11 @@
 ﻿namespace UnitTest91
 {
-    public class ProfileDao
+    public interface IProfile
+    {
+        string GetPassword(string account);
+    }
+
+    public class ProfileDao : IProfile
     {
         public string GetPassword(string account)
         {

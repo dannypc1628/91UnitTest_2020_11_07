@@ -2,7 +2,12 @@
 
 namespace UnitTest91
 {
-    public class RsaTokenDao
+    public interface IToken
+    {
+        string GetRandom(string account);
+    }
+
+    public class RsaTokenDao : IToken
     {
         public string GetRandom(string account)
         {
