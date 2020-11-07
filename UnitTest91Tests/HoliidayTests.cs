@@ -13,7 +13,7 @@ namespace UnitTest91.Tests
         public void SayHello_Xms_Yes_Test()
         {
             var expect = "Merry Xmas";
-            var holiday = new HoliidayTest(){ _toDay = DateTime.Now};
+            var holiday = new HoliidayTest(){ _toDay = new DateTime(2019,12,25)};
             var actual = holiday.SayHello();
 
             Assert.AreEqual(expect, actual);
@@ -23,7 +23,8 @@ namespace UnitTest91.Tests
         public void SayHello_Xms_No_Test()
         {
             var expect = "Today is not Xmas";
-            var holiday = new HoliidayTest() { _toDay = DateTime.Now };
+            var holiday = new HoliidayTest() { _toDay = new DateTime(2019, 11, 11) };
+
             var actual = holiday.SayHello();
 
             Assert.AreEqual(expect, actual);
